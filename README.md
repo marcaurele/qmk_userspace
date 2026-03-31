@@ -2,6 +2,14 @@
 
 This is a template repository which allows for an external set of QMK keymaps to be defined and compiled. This is useful for users who want to maintain their own keymaps without having to fork the [main QMK repository](https://github.com/qmk/qmk_firmware). You must still fork the main QMK repository if writing firmware for a *new* keyboard.
 
+## marcaurele's keymaps
+
+This is my personal userspace's files for:
+
+- [Corne](./keyboards/crkbd/rev1/keymaps/marcaurele/)
+
+To compile a new firmware: `qmk compile -kb crkbd/rev1 -km marcaurele`.
+
 ## Howto configure your build targets
 
 1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
