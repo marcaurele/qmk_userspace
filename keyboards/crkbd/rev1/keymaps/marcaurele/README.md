@@ -3,20 +3,12 @@
 ## Operations
 
 ```console
-pipenv install qmk
-
-# To install all depedencies
-pipenv run qmk setup
-
-# Set default options
-pipenv run qmk config user.keyboard=crkbd/rev1 user.keymap=marcaurele
-
-# Clean compile
-pipenv run qmk compile --clean -kb crkbd/rev1 -km marcaurele
-pipenv run qmk compile --clean
+qmk compile --clean
+# or without using the config file
+qmk compile --clean -kb crkbd/rev1 -km marcaurele
 
 # Flash (for each unit)
-pipenv run qmk flash -kb crkbd/rev1 -km marcaurele
+qmk flash -kb crkbd/rev1 -km marcaurele
 
 # Generate the JSON mapping
 pipenv run qmk c2json -kb crkbd/rev1 -km marcaurele
@@ -26,7 +18,14 @@ pipenv run qmk c2json -kb crkbd/rev1 -km marcaurele
 
 <https://config.qmk.fm/#/crkbd/rev1/LAYOUT_split_3x6_3> using the DSA Galaxy Class.
 
-## Microcontroler updated
+### Info
+
+- [Basic Keycodes](https://docs.qmk.fm/keycodes_basic)
+- [Quantum Keycodes](https://docs.qmk.fm/quantum_keycodes)
+- [Grave/Escape](https://docs.qmk.fm/features/grave_esc)
+- [Mouse keys](https://docs.qmk.fm/features/mouse_keys)
+
+## Microcontroler updated (from jpmenil)
 
 ### DFU
 
