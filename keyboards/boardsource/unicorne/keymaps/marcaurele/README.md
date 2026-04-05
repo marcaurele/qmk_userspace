@@ -21,7 +21,7 @@ Each side must be flashed individually.
 - While holding the top left key on the left half, plug in the left half.
 - You should see the keyboard enter boot mode and a new USB device should appear.
 - Mount / activate the USB device (through Nautilus for example).
-- Drag .utf2 file into keyboard drive or let `qmk flash` do it automatically
+- Drag .utf2 file into keyboard drive or let `qmk flash -kb boardsource/unicorne -km marcaurele` do it automatically
 - The board should reboot.
 
 _Repeat for right half, but hold top right key while plugging it in._

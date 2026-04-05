@@ -7,8 +7,9 @@ This is a template repository which allows for an external set of QMK keymaps to
 This is my personal userspace's files for:
 
 - [Corne](./keyboards/crkbd/rev1/keymaps/marcaurele/)
+- [Unicorne](./keyboards/boardsource/unicorne/keymaps/marcaurele/)
 
-To compile a new firmware: `qmk compile -kb crkbd/rev1 -km marcaurele`.
+To compile a new firmware: `qmk userspace-compile --clean --print-failures`. See each keyboard on how to flash them.
 
 ## Howto configure your build targets
 
@@ -27,14 +28,6 @@ To compile a new firmware: `qmk compile -kb crkbd/rev1 -km marcaurele`.
     * Listing the build targets can be done with `qmk userspace-list`
 1. Commit your changes
 
-## Howto build with GitHub
-
-1. In the GitHub Actions tab, enable workflows
-1. Push your changes above to your forked GitHub repository
-1. Look at the GitHub Actions for a new actions run
-1. Wait for the actions run to complete
-1. Inspect the Releases tab on your repository for the latest firmware build
-
 ## Howto build locally
 
 1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
@@ -48,15 +41,6 @@ To compile a new firmware: `qmk compile -kb crkbd/rev1 -km marcaurele`.
 Alternatively, if you configured your build targets above, you can use `qmk userspace-compile` to build all of your userspace targets at once.
 
 ## Extra info
-
-If you wish to point GitHub actions to a different repository, a different branch, or even a different keymap name, you can modify `.github/workflows/build_binaries.yml` to suit your needs.
-
-To override the `build` job, you can change the following parameters to use a different QMK repository or branch:
-```
-    with:
-      qmk_repo: qmk/qmk_firmware
-      qmk_ref: master
-```
 
 If you wish to manually manage `qmk_firmware` using git within the userspace repository, you can add `qmk_firmware` as a submodule in the userspace directory instead. GitHub Actions will automatically use the submodule at the pinned revision if it exists, otherwise it will use the default latest revision of `qmk_firmware` from the main repository.
 
