@@ -1,22 +1,5 @@
-/*
-Copyright 2019 @foostan
-Copyright 2020 Drashna Jaelre <@drashna>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
-
 #include QMK_KEYBOARD_H
+#include "myoled.h"
 
 enum crkbd_layers {
     _QWERTY,
@@ -24,10 +7,6 @@ enum crkbd_layers {
     _RAISE,
     _ADJUST,
 };
-
-#define DWM(x) LGUI(KC_ ## x)
-#define LOWER MO(_LOWER) // MO(1)
-#define RAISE MO(_RAISE) // MO(2)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_split_3x6_3(
@@ -51,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX,RCS(KC_V),XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(2), KC_RALT
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT,   MO(3), KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -63,7 +42,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_PSCR,   KC_LT, KC_PGUP, KC_PGDN,   KC_GT,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI,   MO(1),  KC_SPC,     KC_ENT, _______, KC_RALT
+                                          KC_LGUI,   MO(3),  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -71,9 +50,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RM_TOGG, RM_HUEU, RM_SATU, RM_VALU, XXXXXXX, XXXXXXX,                      KC_MUTE, KC_VOLD, KC_MSTP, KC_MPLY, KC_VOLU, KC_MNXT,
+      UG_TOGG, UG_PREV, UG_NEXT, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_MUTE, KC_VOLD, KC_MSTP, KC_MPLY, KC_VOLU, KC_MNXT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      RM_NEXT, RM_HUED, RM_SATD, RM_VALD, RGB_M_R,RGB_M_SW,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+      RM_TOGG, RM_PREV, RM_NEXT, XXXXXXX, XXXXXXX, XXXXXXX,                        KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
@@ -81,19 +60,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
-    return state;
-}
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
+//     return state;
+// }
 
 #ifdef OLED_ENABLE
-oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-    if (is_keyboard_master()) {
-        return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
-    }
+// oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+//     if (is_keyboard_master()) {
+//         return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
+//     }
 
-    return rotation;
-}
+//     return rotation;
+// }
 
 void render_crkbd_logo(void) {
     static const char PROGMEM crkbd_logo[] = {
@@ -104,23 +83,24 @@ void render_crkbd_logo(void) {
     oled_write_P(crkbd_logo, false);
 }
 
-void render_layer_state(void) {
-    oled_write_P(PSTR("Layer"), false);
-    oled_write_P(PSTR("Lower"), layer_state_is(_LOWER));
-    oled_write_P(PSTR("Raise"), layer_state_is(_RAISE));
-}
 
-void render_status_main(void) {
-    // render_default_layer_state();
-    render_layer_state();
-    // render_keylogger_status();
-    // render_wpm();
-}
+// void render_layer_state(void) {
+//     oled_write_P(PSTR("Layer"), false);
+//     oled_write_P(PSTR("Lower"), layer_state_is(_LOWER));
+//     oled_write_P(PSTR("Raise"), layer_state_is(_RAISE));
+// }
+
+// void render_status_main(void) {
+//     // render_default_layer_state();
+//     render_layer_state();
+//     // render_keylogger_status();
+//     // render_wpm();
+// }
 
 bool oled_task_user(void) {
     // update_log();
     if (is_keyboard_master()) {
-        render_status_main();
+        render_layer_state();
     } else {
         render_crkbd_logo();
     }
