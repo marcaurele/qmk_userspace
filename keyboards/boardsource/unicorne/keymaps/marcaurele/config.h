@@ -11,6 +11,7 @@
     #define OLED_BRIGHTNESS 160     // Brightness level (0-255)
     #define SPLIT_OLED_ENABLE       // Enable OLED on both keyboard halves
     #define SPLIT_WPM_ENABLE        // Sync WPM data between master and slave
+    #define OLED_FONT_H "crkbd/lib/glcdfont.c"  // Custom font for CRKBD logo
 #endif
 
 
@@ -27,7 +28,8 @@
 #    define RGB_MATRIX_SAT_STEP 8
 #    define RGB_MATRIX_VAL_STEP 8
 #    define RGB_MATRIX_SPD_STEP 10
-#    define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#    define RGB_MATRIX_DEFAULT_VAL 90
+#    define RGB_MATRIX_DEFAULT_SPD 80
 
 #     undef RGB_MATRIX_DEFAULT_MODE
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON
