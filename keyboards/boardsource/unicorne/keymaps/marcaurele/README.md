@@ -16,15 +16,19 @@
 
 Each side must be flashed individually.
 
-- Unplug the two halves from each other
-- Unplug the left side from the computer
-- While holding the top left key on the left half, plug in the left half.
+- Unplug the two halves from each other _(Optional)_
+- While holding the top right key on the right half, plug in the right half.
 - You should see the keyboard enter boot mode and a new USB device should appear.
 - Mount / activate the USB device (through Nautilus for example).
 - Drag .utf2 file into keyboard drive or let `qmk flash -kb boardsource/unicorne -km marcaurele` do it automatically
 - The board should reboot.
+- While holding the top left key on the left half, plug in the left half.
+- You should see the keyboard enter boot mode and a new USB device should appear.
+- Mount / activate the USB device (through Nautilus for example).
+- Drag .utf2 file into keyboard drive or let `qmk flash -kb boardsource/unicorne -km marcaurele` do it automatically
+- The board should reboot and both sides have been flashed.
 
-_Repeat for right half, but hold top right key while plugging it in._
+_Flashing must be done seperatly for both half keyboard._
 
 ## Mouse Drift
 

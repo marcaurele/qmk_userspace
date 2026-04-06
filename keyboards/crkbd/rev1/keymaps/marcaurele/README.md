@@ -1,17 +1,23 @@
 # My CRKBD keymap
 
+## Model
+
+- IMK Corne keyboard
+- Reuse Boardsource/unicorne display layers
+- CRKBD logo
+
 ## Operations
 
+To compile the firmware:
+
 ```console
-qmk compile --clean
-# or without using the config file
 qmk compile --clean -kb crkbd/rev1 -km marcaurele
+```
 
-# Flash (for each unit)
+To flash the keyboard:
+
+```console
 qmk flash -kb crkbd/rev1 -km marcaurele
-
-# Generate the JSON mapping
-pipenv run qmk c2json -kb crkbd/rev1 -km marcaurele
 ```
 
 ## Keyboard config
