@@ -60,19 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-// layer_state_t layer_state_set_user(layer_state_t state) {
-//     state = update_tri_layer_state(state, _RAISE, _LOWER, _ADJUST);
-//     return state;
-// }
-
 #ifdef OLED_ENABLE
-// oled_rotation_t oled_init_user(oled_rotation_t rotation) {
-//     if (is_keyboard_master()) {
-//         return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
-//     }
-
-//     return rotation;
-// }
 
 void render_crkbd_logo(void) {
     static const char PROGMEM crkbd_logo[] = {
@@ -82,20 +70,6 @@ void render_crkbd_logo(void) {
         0};
     oled_write_P(crkbd_logo, false);
 }
-
-
-// void render_layer_state(void) {
-//     oled_write_P(PSTR("Layer"), false);
-//     oled_write_P(PSTR("Lower"), layer_state_is(_LOWER));
-//     oled_write_P(PSTR("Raise"), layer_state_is(_RAISE));
-// }
-
-// void render_status_main(void) {
-//     // render_default_layer_state();
-//     render_layer_state();
-//     // render_keylogger_status();
-//     // render_wpm();
-// }
 
 bool oled_task_user(void) {
     // update_log();
