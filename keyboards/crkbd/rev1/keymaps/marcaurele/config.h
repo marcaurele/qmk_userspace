@@ -61,7 +61,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #    define RGB_MATRIX_VAL_STEP 8
 #    define RGB_MATRIX_SPD_STEP 10
 #    define RGB_MATRIX_DEFAULT_VAL 90 // Sets the default brightness value, if none has been set
-#    define RGB_MATRIX_DEFAULT_SPD 80 // Sets the default animation speed, if none has been set
+#    define RGB_MATRIX_DEFAULT_SPD 120 // Sets the default animation speed, if none has been set
 
 #     undef RGB_MATRIX_DEFAULT_MODE
 #    define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON
