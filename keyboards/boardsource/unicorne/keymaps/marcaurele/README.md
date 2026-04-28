@@ -5,7 +5,7 @@
 - Unicorne MX from boardsouce.xyz
 - QMK / VIA firmware compatible
 - Layout: Corne / CRKBD (3x6 +3 column-staggered split layout)
-- Microcontroller: RP2040
+- Microcontroller: [RP2040](https://docs.qmk.fm/platformdev_rp2040)
 - Firmware: QMK / VIA (pre-flashed with VIA)
 - Connection: Dual USB-C
 - Compatibility: Works with most Corne MX-style cases
