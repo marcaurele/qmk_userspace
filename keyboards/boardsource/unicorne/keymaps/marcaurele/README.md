@@ -34,3 +34,23 @@ _Flashing must be done seperatly for both half keyboard._
 
 The mouse drift must be fixed with an extra configuration to disable the
 _pointing device_, see <https://boardsource.xyz/blogs/build-guides/unicorne-keyboard-build-guide>.
+
+## Layers
+
+You activate the layer by holding down (shown as a triangle pointing down) the _MO(1)_ and/or _MO(2)_ keys.
+
+### Base layer
+
+![layer 0 - base layer](./layer-0.png)
+
+### Layer 1
+
+![layer 1](./layer-1.png)
+
+### Layer 2
+
+![layer 2](./layer-2.png)
+
+### Layer 3
+
+![layer 3](./layer-3.png)
